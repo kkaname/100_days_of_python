@@ -1,0 +1,7 @@
+so on this day-6 of learing pyton from the '100 days of python' course, i learned the following things
+--code blocks
+--functions
+--indentation
+--while loops
+
+I practiced functions by finishing tasks in Reeborg's World
