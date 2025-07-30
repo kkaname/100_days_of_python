@@ -12,6 +12,7 @@ num_symbols = int(input("How many symbols would you like?"))
 
 #we create a empty list to which we wil append characters as the the number of characters entered by the user
 password = []
+#password = "", also works 
 
 for letter in range(num_letters):
     password.append(random.choice(letters))
