@@ -1,87 +1,21 @@
+#first we import important modules
 import random
-#r""" --> means raw string, i.e., it tells python not to see blackslashs as escape sequence
-#this below here, is called 'manual indexing using variables'
-life = {
-    1: r"""   +---+
-   |   |
-   O   |
-       |
-       |
-       |
- =========""",
+import hangman_art
+from hangman_words import word_list     
 
-    2: r"""   +---+
-   |   |
-   O   |
-   |   |
-       |
-       |
- =========""",
-
-    3: r"""   +---+
-   |   |
-   O   |
-  /|   |
-       |
-       |
- =========""",
-
-    4: r"""   +---+
-   |   |
-   O   |
-  /|\  |
-       |
-       |
- =========""",
-
-    5: r"""   +---+
-   |   |
-   O   |
-  /|\  |
-  /    |
-       |
- =========""",
-
-    6: r"""   +---+
-   |   |
-   O   |
-  /|\  |
-  / \  |
-       |
- ========="""
-}
-
-print("***********************************************************************")
-print('''Welcome to, 
- _                                                
-| |                                            
-| |__   __ _ _ __   __ _ _ __ ___   __ _ _ __  
-| '_ ' / _` | '_ ' / _` | '_ ` _ ' / _` | '_ ' 
-| | | | (_| | | | | (_| | | | | | | (_| | | | |
-|_| |_|'__,_|_| |_|'__, |_| |_| |_|'__,_|_| |_|  GAME
-                    __/ |                      
-                   |___/    
-      +---+
-      |   |
-          |
-          |
-          |
-          |
-    =========
-
-''')
+print("*************************************************************************************************")
+#importing the logo from hangman_art module and printing it to make the code cleaner
+print(hangman_art.logo)
 
 num_life = 6
 
-#defineing a list of words from which a word will be choosen in random and is asked the user to guess the letter from the same word
-word_list = ['apple', 'house', 'chair' 'tiger', 'water',  'bread',  'smile',  'green', 'pizza',  'music', 'jungle',  'planet', 'ladder', 'pillow',  'guitar',  'castle' ,'window',  'doctor', 'rocket' 'tunnel', 'labyrinth', 'zephyr',  'phoenix',  'cryptic',  'knapsack',  'bewilder',  'drought',  'avalanche',  'quadrant',  'mystique']
-
 choosen_word = random.choice(word_list)
-print("Word to guess:", end='')
 #making a array of blank character, with as same length as the choosen word
 placeholder = []
 for position in range(len(choosen_word)):
     placeholder.append('_')
+
+print("Word to guess:", end='')
 for blank in placeholder:
     print(blank, end='')
 print("\n")
@@ -107,9 +41,9 @@ while(not game_over and num_life > 0):
     if(letter_present == 0):
         #if the guess letter is not in the choosen word, it is a wrong letter
         num_life -= 1
-        print(life[6 - num_life])
-        print("Wrong guess!")
-        print(f"*************************lives-->({num_life}/6)*************************")
+        print(hangman_art.life[6 - num_life])
+        print(f"Wrong guess, the letter '{guess_letter}', is not in the word!")
+        print(f"***********************************LIVES-->({num_life}/6)****************************************")
     
     #used to print the updated placeholder array
     for blank in placeholder:
@@ -119,8 +53,8 @@ while(not game_over and num_life > 0):
     #if all the words are guessed, i.e., all the blanks are filled and there is no blank left, makes the game over and the player has won the game
     if "_" not in placeholder:
         game_over = True
-        print("YOU HAVE GUESSED ALL THE LETTERS CORRECTLY, YOU WON!!")
+        print("******************************YOU GUESED THE WORD RIGHT, YOU WIN!!!******************************")
     if(num_life == 0):
-        print(f"AAHHOHHH! YOU FAILED TO GUESS THE LETTERS.\nTHE WORD WAS ==> {choosen_word}.\nAND RAN OUT OF YOUR CHANCES, LOST!!")
+        print(f"******************************THE WORD WAS '{choosen_word}', YOU LOOSE*****************************")          
 
 
